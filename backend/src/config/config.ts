@@ -11,7 +11,7 @@ interface Config {
 const config: Config = {
 	port: Number(process.env.PORT) || 3000,
 	nodeEnv: process.env.NODE_ENV || "development",
-	database: process.env.DATABASE || "",
+	database: process.env.DATABASE ?? "",
 };
 
 export default config;
