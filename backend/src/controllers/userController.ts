@@ -8,7 +8,7 @@ const createUser = catchAsync(
 	async (req: Request, res: Response, _next: NextFunction) => {
 		const newUser = await User.create(req.body);
 
-		res.status(201).json(newUser);
+		res.status(201).json({ user: newUser });
 	},
 );
 
@@ -16,7 +16,7 @@ const getAllUsers = catchAsync(
 	async (_req: Request, res: Response, _next: NextFunction) => {
 		const users = await User.find();
 
-		res.status(200).json(users);
+		res.status(200).json({ users });
 	},
 );
 
@@ -30,7 +30,7 @@ const getUserById = catchAsync(
 			);
 		}
 
-		res.status(200).json(user);
+		res.status(200).json({ user });
 	},
 );
 
@@ -44,7 +44,7 @@ const updateUser = catchAsync(
 			);
 		}
 
-		res.status(200).json(user);
+		res.status(200).json({ user });
 	},
 );
 

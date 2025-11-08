@@ -4,7 +4,7 @@ import validators from "./validators";
 
 export const signupSchema = z
 	.object({
-		body: z.object({
+		body: z.strictObject({
 			name: z.string().min(2, "Name must be at least 2 characters"),
 			email: validators.emailField(),
 			password: validators.passwordField(),

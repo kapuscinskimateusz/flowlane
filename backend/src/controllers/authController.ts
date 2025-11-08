@@ -1,5 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
+import config from "../config/config";
 import { User } from "../models/userModel";
 import { signupSchema } from "../schemas/authSchema";
 import { catchAsync } from "../utils/catchAsync";
@@ -13,9 +15,18 @@ const signup = catchAsync(
 			return next(new ValidationError(parsed.error.issues));
 		}
 
-		const newUser = await User.create(req.body);
+		const { passwordConfirm: _passwordConfirm, ...userData } = parsed.data.body;
 
-		res.status(201).json(newUser);
+		const newUser = await User.create(userData);
+
+		const token = jwt.sign({ id: newUser._id }, config.jwtSecret, {
+			expiresIn: config.jwtExpiresIn,
+		});
+
+		res.status(201).json({
+			token,
+			user: newUser,
+		});
 	},
 );
 
