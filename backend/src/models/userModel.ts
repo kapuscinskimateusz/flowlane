@@ -1,7 +1,20 @@
 import bcrypt from "bcrypt";
-import mongoose from "mongoose";
+import mongoose, { type Model } from "mongoose";
 
-const userSchema = new mongoose.Schema({
+interface IUser {
+	name: string;
+	email: string;
+	password: string;
+}
+
+interface UserMethods {
+	comparePassword(
+		candidatePassword: string,
+		userPassword: string,
+	): Promise<boolean>;
+}
+
+const userSchema = new mongoose.Schema<IUser, Model<IUser>, UserMethods>({
 	name: {
 		type: String,
 		required: true,
@@ -27,10 +40,11 @@ userSchema.pre("save", async function (next) {
 	next();
 });
 
-userSchema.methods.comparePassword = async function (
+userSchema.methods.comparePassword = async (
 	candidatePassword: string,
-) {
-	return bcrypt.compare(candidatePassword, this.password);
+	userPassword: string,
+) => {
+	return await bcrypt.compare(candidatePassword, userPassword);
 };
 
 export const User = mongoose.model("User", userSchema);
