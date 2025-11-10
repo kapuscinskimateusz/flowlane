@@ -6,8 +6,7 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false,
-		"includes": ["**", "!**/*.gen.ts"]
+		"ignoreUnknown": false
 	},
 	"formatter": {
 		"enabled": true,

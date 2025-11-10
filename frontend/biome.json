@@ -1,0 +1,18 @@
+{
+	"extends": "//",
+	"files": {
+		"includes": ["**", "!**/*.gen.ts"]
+	},
+	"linter": {
+		"rules": {
+			"nursery": {
+				"useSortedClasses": {
+					"options": {
+						"attributes": ["classList"],
+						"functions": ["clsx", "cva", "tw", "tw.*"]
+					}
+				}
+			}
+		}
+	}
+}
