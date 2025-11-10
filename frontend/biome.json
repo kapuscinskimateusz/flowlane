@@ -1,7 +1,7 @@
 {
 	"extends": "//",
 	"files": {
-		"includes": ["**", "!**/*.gen.ts"]
+		"includes": ["**", "!**/*.gen.ts", "!src/index.css"]
 	},
 	"linter": {
 		"rules": {
