@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"prepare-files": "biome check --write"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.6"
 	}
