@@ -9,10 +9,13 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@tanstack/react-router": "^1.135.0",
+		"@tanstack/react-router-devtools": "^1.135.0",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0"
 	},
 	"devDependencies": {
+		"@tanstack/router-plugin": "^1.135.0",
 		"@types/node": "^24.10.0",
 		"@types/react": "^19.2.2",
 		"@types/react-dom": "^19.2.2",
